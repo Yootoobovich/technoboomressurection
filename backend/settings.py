@@ -12,7 +12,7 @@ SECRET_KEY = 'django-insecure-qvr^zs1@#0lmari&yhhx0tqdy^siw7$k-k-l0877zt2b7165#8
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [.]
+ALLOWED_HOSTS = [technoboomressurection-production.up.railway.app]
 
 APPEND_SLASH = False
 CORS_ORIGIN_ALLOW_ALL = True
@@ -129,6 +129,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') # Важливо для збору статичних файлів
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
