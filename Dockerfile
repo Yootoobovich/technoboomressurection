@@ -17,7 +17,7 @@ RUN pip install -v --no-cache-dir -r /app/requirements.txt
 # Оставшиеся инструкции вашего Dockerfile...
 
 # Інформація про порт, який прослуховує додаток (не публікує порт)
-EXPOSE 8000
+EXPOSE 8080
 
 # Команда для запуску (або вкажіть CMD в Procfile)
 # CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
