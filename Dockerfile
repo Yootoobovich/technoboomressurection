@@ -1,23 +1,20 @@
 FROM python:3.9-slim
 
-# Встановлюємо робочу директорію
-WORKDIR /app
+# Устанавливаем необходимые зависимости, ВКЛЮЧАЯ GCC
+RUN apt-get update && apt-get install -y \
+    pkg-config \
+    libmariadb-dev \
+    gcc \
+    && rm -rf /var/lib/apt/lists/*
 
-# Копіюємо requirements.txt
+# Копируем requirements.txt *перед* его использованием,
+# чтобы использовать кэширование слоев Docker
 COPY requirements.txt /app/
 
-# Оновлюємо та встановлюємо системні залежності
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    pkg-config \
-    libmariadb-dev \
-    gcc \
-    && rm -rf /var/lib/apt/lists/*
-
-# Встановлюємо залежності Python
+# Устанавливаем зависимости Python
 RUN pip install -v --no-cache-dir -r /app/requirements.txt
 
-# Копіюємо решту файлів проєкту
-COPY . /app/
+# Оставшиеся инструкции вашего Dockerfile...
 
 # Інформація про порт, який прослуховує додаток (не публікує порт)
 EXPOSE 8000
